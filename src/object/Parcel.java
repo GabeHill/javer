@@ -1,5 +1,7 @@
 package object;
 
+import java.math.BigInteger;
+
 public class Parcel implements Comparable<Parcel> {
 	private static int counter = 1;
 	public final double[] dimensions = new double[3];
@@ -18,7 +20,10 @@ public class Parcel implements Comparable<Parcel> {
 
 	@Override
 	public int compareTo(Parcel o) {
-		return (int) ((o.sortCriterion - sortCriterion) * 10);
+		final BigInteger oo = BigInteger.valueOf((long) (o.sortCriterion * 10000));
+		final BigInteger r = BigInteger.valueOf((long) (sortCriterion * 10000));
+
+		return r.compareTo(oo);
 
 	}
 
